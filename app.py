@@ -9,6 +9,28 @@ from deduplicate import merge_and_deduplicate
 
 st.set_page_config(page_title="免费文献检索工具", layout="wide")
 
+hide_streamlit_style = """
+<style>
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+header {
+    visibility: hidden;
+}
+
+.stDeployButton {
+    display: none;
+}
+</style>
+"""
+
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 st.title("免费文献检索工具")
 st.caption("OpenAlex + Crossref + Semantic Scholar + 知网 BibTeX 导入")
 
@@ -141,7 +163,9 @@ if st.button("一键检索", type="primary"):
                 merged_papers = enrich_with_crossref(
                     merged_papers,
                     mailto=email,
-                    max_items=30
+                    max_items=50,
+                    semantic_key=semantic_key,
+                    enrich_abstract=True
                 )
 
         df = pd.DataFrame(merged_papers)

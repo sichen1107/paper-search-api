@@ -121,7 +121,9 @@ def search_papers_core(
         merged_papers = enrich_with_crossref(
             merged_papers,
             mailto=email,
-            max_items=30
+            max_items=50,
+            semantic_key=semantic_key,
+            enrich_abstract=True
         )
 
     return {
