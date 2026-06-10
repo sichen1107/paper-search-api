@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+requests
+pandas
+openpyxl
+bibtexparser
+rapidfuzz
+python-multipart
